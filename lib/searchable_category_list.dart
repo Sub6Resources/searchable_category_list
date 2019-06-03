@@ -50,7 +50,7 @@ class SearchableCategoryList extends StatelessWidget {
       categoryList.addAll(value.map((i) => items[i]));
     });
 
-    if(categoryList.isEmpty && emptyState != null) {
+    if (categoryList.isEmpty && emptyState != null) {
       return emptyState;
     }
 
@@ -58,22 +58,22 @@ class SearchableCategoryList extends StatelessWidget {
   }
 
   bool itemMeetsSearchCriteria(ValueKey key, String searchQuery) {
-    if(searchQuery == null || searchQuery.isEmpty) {
+    if (searchQuery == null || searchQuery.isEmpty) {
       return true;
     }
-    if(ignoreWhitespace) {
+    if (ignoreWhitespace) {
       searchQuery = searchQuery.trim();
     }
-    if(caseSensitive) {
-      if((key?.value?.toString() ?? "").contains(searchQuery)) {
+    if (caseSensitive) {
+      if ((key?.value?.toString() ?? "").contains(searchQuery)) {
         return true;
       }
     } else {
-      if((key.value.toString().toLowerCase() ?? "").contains(searchQuery.toLowerCase())) {
+      if ((key.value.toString().toLowerCase() ?? "")
+          .contains(searchQuery.toLowerCase())) {
         return true;
       }
     }
     return false;
   }
 }
-
