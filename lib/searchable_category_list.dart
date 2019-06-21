@@ -14,6 +14,7 @@ class SearchableCategoryList extends StatelessWidget {
   final StringWidgetBuilder categoryItem;
   final int itemCount;
   final Widget emptyState;
+  final ScrollController scrollController;
 
   SearchableCategoryList.builder({
     this.searchQuery,
@@ -24,6 +25,7 @@ class SearchableCategoryList extends StatelessWidget {
     @required this.categoryItem,
     @required this.itemCount,
     this.emptyState,
+    this.scrollController,
   });
 
   @override
@@ -54,7 +56,10 @@ class SearchableCategoryList extends StatelessWidget {
       return emptyState;
     }
 
-    return ListView(children: categoryList);
+    return ListView(
+      children: categoryList,
+      controller: scrollController,
+    );
   }
 
   bool itemMeetsSearchCriteria(ValueKey key, String searchQuery) {
